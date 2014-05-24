@@ -1,0 +1,16 @@
+{
+    "contents" : "## The following functions use a special matrix object which takes\n## a matrix as an argument and is capable of calculating the inverse\n## of this matrix while caching the result to avoid repeat calculations\n\n\n\n## makeCache matrix is responsible for creating the special matrix object\n## and contains the various functions related to the matrix including calculating the inverse\n\n\n\nmakeCacheMatrix <- function(x = matrix()) {\n        \n        inv <- NULL ## sets the cache to null each time the function is initialised\n        \n        \n        \n        set <- function(y) {  ##takes a matrix, puts it into x and empties the Cache\n                x <<- y       ##emptying the cache ensures getinverse doesn't print a  \n                inv <<- NULL  ##cache of an old matrix we have yet to calculate the inverse of.\n                \n        } \n        \n        \n        get <- function() x ## Prints the matrix to the console\n        \n        setinverse <- function(inverse) inv <<- inverse ## allows the user to set the inverse, or for it to be set up other functions\n        \n        inverse <- function(){ ## uses solve to calculate the inverse of the given matrix, then caches it\n                \n                j <- x\n                j <- solve(j) \n                inv <<- j\n        } \n        \n        getinverse <- function() inv #prints the cached inverse we calculated\n        \n        list(set = set, get = get,\n             inverse = inverse,\n             getinverse = getinverse) #defines the list of functions created by makeCacheMatrix\n}\n\n\n\n\n\n## cachesolve first checks if the inverse has been cached, if so it simply prints the inverse,\n## if not it calculates and caches it.\n\n\n\ncacheSolve <- function(x, ...) { \n        \n        inv <- x$getinverse() ##fills inv with the contents of makeCacheMatrix's cache\n        \n        \n        if(!is.null(inv)) { ##if inv is filled with anything other than Null, it simply prints the cache's contents\n                \n                message(\"Retrieving cached data\")\n                return(inv)\n                \n        }\n        \n        data <- x$get()\n        inv <- solve(data, ...)\n        x$setinverse(inv) ##if inv contains null, cacheSolve will calculate the inverse itself, then cache and print it.\n        inv\n        \n}\n",
+    "created" : 1400944194114.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3289650507",
+    "id" : "6106A8AB",
+    "lastKnownWriteTime" : 1400958776,
+    "path" : "C:/Users/Kyle/Dropbox/School/Data science/R/assigment 2/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

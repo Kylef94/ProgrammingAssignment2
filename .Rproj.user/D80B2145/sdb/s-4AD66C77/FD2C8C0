@@ -1,0 +1,16 @@
+{
+    "contents" : "makeVector <- function(x = numeric()) {\n        \n        m <- NULL\n        \n        set <- function(y) {\n                x <<- y\n                m <<- NULL\n        }\n        \n        \n        get <- function() x\n        \n        setmean <- function(mean) m <<- mean\n        \n        getmean <- function() m\n        \n        list(set = set, get = get,\n             setmean = setmean,\n             getmean = getmean)\n}",
+    "created" : 1400944315384.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "412166202",
+    "id" : "FD2C8C0",
+    "lastKnownWriteTime" : 31244048835477601,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
